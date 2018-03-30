@@ -1,5 +1,6 @@
 package demos;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -10,6 +11,8 @@ public class Login {
 		
 		
 		driver.get("https://www.google.com/");
+		driver.findElement(By.id("lst-ib")).sendKeys("Udemy");
+		driver.findElement(By.name("btnI")).click();
 	}
 
 }
