@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Login {
+public class GoogleChromeDriver {
 	public static void main(String[] args) {
-		//Define Webdriver
+		//Define Webdriver for Chrome
 		System.setProperty("webdriver.chrome.driver", "/Users/kylederrick/Desktop/Software/chromedriver");
 		WebDriver driver = new ChromeDriver();
 		
