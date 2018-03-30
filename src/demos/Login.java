@@ -15,6 +15,8 @@ public class Login {
 		driver.findElement(By.name("btnI")).click();
 		String confirm = driver.findElement(By.className("notice-streamer__headline")).getText();
 		System.out.println("CONFIRMATION:" + confirm);
+		String pageTitle = driver.getTitle();
+		System.out.println(pageTitle);
 	}
 
 }
