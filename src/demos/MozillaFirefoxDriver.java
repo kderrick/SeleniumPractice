@@ -1,5 +1,6 @@
 package demos;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -12,6 +13,8 @@ public class MozillaFirefoxDriver {
 		WebDriver driver = new FirefoxDriver();
 		//Open browser and navigate to page
 		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
+		//Click "Create Account" button
+		driver.findElement(By.linkText("Create Account")).click();
 	}
 
 }
