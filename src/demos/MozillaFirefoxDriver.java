@@ -15,6 +15,9 @@ public class MozillaFirefoxDriver {
 		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
 		//Click "Create Account" button
 		driver.findElement(By.linkText("Create Account")).click();
+		//Fill out form
+		driver.findElement(By.name("ctl00$MainContent$txtFirstName")).sendKeys("Jojo Johnson");
+		driver.findElement(By.id("MainContent_txtEmail")).sendKeys("fakemeail@gmail.com");
 	}
 
 }
