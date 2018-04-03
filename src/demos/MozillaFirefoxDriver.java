@@ -18,6 +18,8 @@ public class MozillaFirefoxDriver {
 		//Fill out form
 		driver.findElement(By.name("ctl00$MainContent$txtFirstName")).sendKeys("Jojo Johnson");
 		driver.findElement(By.id("MainContent_txtEmail")).sendKeys("fakemeail@gmail.com");
+		//Using Xpath, even though it has an ID
+		driver.findElement(By.xpath("//*[@id='MainContent_txtHomePhone']")).sendKeys("503999999");
 	}
 
 }
