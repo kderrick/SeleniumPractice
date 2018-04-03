@@ -20,6 +20,8 @@ public class MozillaFirefoxDriver {
 		driver.findElement(By.id("MainContent_txtEmail")).sendKeys("fakemeail@gmail.com");
 		//Using Xpath, even though it has an ID
 		driver.findElement(By.xpath("//*[@id='MainContent_txtHomePhone']")).sendKeys("503999999");
+		//Using CSS Selector, despite having ID
+		driver.findElement(By.cssSelector("input[id='MainContent_txtPassword'][type='password']")).sendKeys("password");
 	}
 
 }
