@@ -13,6 +13,7 @@ public class MozillaFirefoxDriver {
 		WebDriver driver = new FirefoxDriver();
 		//Open browser and navigate to page
 		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
+		//Locate Elements
 		//Click "Create Account" button
 		driver.findElement(By.linkText("Create Account")).click();
 		//Fill out form
@@ -22,6 +23,12 @@ public class MozillaFirefoxDriver {
 		driver.findElement(By.xpath("//*[@id='MainContent_txtHomePhone']")).sendKeys("503999999");
 		//Using CSS Selector, despite having ID
 		driver.findElement(By.cssSelector("input[id='MainContent_txtPassword'][type='password']")).sendKeys("password");
+		
+		//Interact with other elements
+		//Radio button
+		//driver.findElement(By.id("MainContent_Female")).click();
+		//Or by using CSS
+		driver.findElement(By.cssSelector("input[name='ctl00$MainContent$Gender'][value='Female']")).click();
 	}
 
 }
