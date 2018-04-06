@@ -33,6 +33,10 @@ public class MozillaFirefoxDriver {
 		
 		//Access and select from Dropdown
 		new Select(driver.findElement(By.id("MainContent_menuCountry"))).selectByVisibleText("India");
+		
+		//Check boxes
+		driver.findElement(By.name("ctl00$MainContent$checkWeeklyEmail")).click();
+		driver.findElement(By.name("ctl00$MainContent$checkMonthlyEmail")).click();
 	}
 
 }
