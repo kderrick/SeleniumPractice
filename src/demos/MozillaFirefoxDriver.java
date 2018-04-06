@@ -3,6 +3,7 @@ package demos;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class MozillaFirefoxDriver {
 
@@ -29,6 +30,9 @@ public class MozillaFirefoxDriver {
 		//driver.findElement(By.id("MainContent_Female")).click();
 		//Or by using CSS
 		driver.findElement(By.cssSelector("input[name='ctl00$MainContent$Gender'][value='Female']")).click();
+		
+		//Access and select from Dropdown
+		new Select(driver.findElement(By.id("MainContent_menuCountry"))).selectByVisibleText("India");
 	}
 
 }
