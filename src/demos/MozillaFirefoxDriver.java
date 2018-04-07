@@ -8,15 +8,22 @@ import org.openqa.selenium.support.ui.Select;
 public class MozillaFirefoxDriver {
 
 	public static void main(String[] args) {
-		//Set webdriver
-		System.setProperty("webdriver.gecko.driver", "/Users/kylederrick/Desktop/Software/geckodriver");
+		final String fireFoxDriver = "webdriver.gecko.driver";
+		final String fireFoxDriverPath = "/Users/kylederrick/Desktop/Software/geckodriver";
+		final String webSiteURL = "http://sdettraining.com/trguitransactions/AccountManagement.aspx";
+		final String createAccount = "Create Account";
+		
+		
+		
+		//Set web driver
+		System.setProperty(fireFoxDriver, fireFoxDriverPath);
 		//Instantiate driver
 		WebDriver driver = new FirefoxDriver();
 		//Open browser and navigate to page
-		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
+		driver.get(webSiteURL);
 		//Locate Elements
 		//Click "Create Account" button
-		driver.findElement(By.linkText("Create Account")).click();
+		driver.findElement(By.linkText(createAccount)).click();
 		//Fill out form
 		driver.findElement(By.name("ctl00$MainContent$txtFirstName")).sendKeys("Jojo Johnson");
 		driver.findElement(By.id("MainContent_txtEmail")).sendKeys("fakemeail@gmail.com");
