@@ -24,6 +24,7 @@ public class MozillaFirefoxDriver {
 		driver.findElement(By.xpath("//*[@id='MainContent_txtHomePhone']")).sendKeys("503999999");
 		//Using CSS Selector, despite having ID
 		driver.findElement(By.cssSelector("input[id='MainContent_txtPassword'][type='password']")).sendKeys("password");
+		driver.findElement(By.id("MainContent_txtVerifyPassword")).sendKeys("password");
 		
 		//Interact with other elements
 		//Radio button
@@ -37,6 +38,16 @@ public class MozillaFirefoxDriver {
 		//Check boxes
 		driver.findElement(By.name("ctl00$MainContent$checkWeeklyEmail")).click();
 		driver.findElement(By.name("ctl00$MainContent$checkMonthlyEmail")).click();
+		
+		//Click Submit button
+		driver.findElement(By.id("MainContent_btnSubmit")).click();
+		
+		
+		//Get confirmation after submit
+		String confirmation = driver.findElement(By.id("MainContent_lblTransactionResult")).getText();
+		System.out.println(confirmation);
+		
+		
 	}
 
 }
