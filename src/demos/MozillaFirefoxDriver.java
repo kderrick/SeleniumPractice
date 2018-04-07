@@ -47,7 +47,8 @@ public class MozillaFirefoxDriver {
 		String confirmation = driver.findElement(By.id("MainContent_lblTransactionResult")).getText();
 		System.out.println(confirmation);
 		
-		
+		//Close browser
+		driver.close();
 	}
 
 }
