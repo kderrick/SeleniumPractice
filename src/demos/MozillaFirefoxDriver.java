@@ -2,6 +2,7 @@ package demos;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -20,6 +21,8 @@ public class MozillaFirefoxDriver {
 		final String phoneNumber = "5039999999";
 		final String password = "FakePassword";
 		final String country = "India";
+		WebDriver driver;
+		String browserType = "firefox";
 		
 		//For Check boxes and radio button
 		String gender;
@@ -27,11 +30,19 @@ public class MozillaFirefoxDriver {
 		String monthlyEmail;
 		String occassionalEmail;
 		
+		//Create WebDriver
+		if(browserType.equals("firefox")) {
+			//Set web driver
+			System.setProperty(fireFoxDriver, fireFoxDriverPath);
+			//Instantiate driver
+			driver = new FirefoxDriver();
+			System.out.println("Using FireFox");
+		} else {
+			System.setProperty("webdriver.chrome.driver", "/Users/kylederrick/Desktop/Software/chromedriver");
+			driver = new ChromeDriver();
+			System.out.println("using Chrome");
+		}
 		
-		//Set web driver
-		System.setProperty(fireFoxDriver, fireFoxDriverPath);
-		//Instantiate driver
-		WebDriver driver = new FirefoxDriver();
 		
 		//Open browser and navigate to page
 		driver.get(webSiteURL);
