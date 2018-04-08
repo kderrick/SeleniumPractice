@@ -7,31 +7,45 @@ import org.openqa.selenium.support.ui.Select;
 
 public class MozillaFirefoxDriver {
 
+
 	public static void main(String[] args) {
+		
+		
 		final String fireFoxDriver = "webdriver.gecko.driver";
 		final String fireFoxDriverPath = "/Users/kylederrick/Desktop/Software/geckodriver";
 		final String webSiteURL = "http://sdettraining.com/trguitransactions/AccountManagement.aspx";
 		final String createAccount = "Create Account";
+		final String name = "Jojo Johnson";
+		final String email = "fakemeail@gmail.com";
+		final String phoneNumber = "5039999999";
+		final String password = "FakePassword";
+		final String country = "India";
 		
+		//For Check boxes and radio button
+		String gender;
+		String weeklyEmail;
+		String monthlyEmail;
+		String occassionalEmail;
 		
 		
 		//Set web driver
 		System.setProperty(fireFoxDriver, fireFoxDriverPath);
 		//Instantiate driver
 		WebDriver driver = new FirefoxDriver();
+		
 		//Open browser and navigate to page
 		driver.get(webSiteURL);
 		//Locate Elements
 		//Click "Create Account" button
 		driver.findElement(By.linkText(createAccount)).click();
 		//Fill out form
-		driver.findElement(By.name("ctl00$MainContent$txtFirstName")).sendKeys("Jojo Johnson");
-		driver.findElement(By.id("MainContent_txtEmail")).sendKeys("fakemeail@gmail.com");
+		driver.findElement(By.name("ctl00$MainContent$txtFirstName")).sendKeys(name);
+		driver.findElement(By.id("MainContent_txtEmail")).sendKeys(email);
 		//Using Xpath, even though it has an ID
-		driver.findElement(By.xpath("//*[@id='MainContent_txtHomePhone']")).sendKeys("503999999");
+		driver.findElement(By.xpath("//*[@id='MainContent_txtHomePhone']")).sendKeys(phoneNumber);
 		//Using CSS Selector, despite having ID
-		driver.findElement(By.cssSelector("input[id='MainContent_txtPassword'][type='password']")).sendKeys("password");
-		driver.findElement(By.id("MainContent_txtVerifyPassword")).sendKeys("password");
+		driver.findElement(By.cssSelector("input[id='MainContent_txtPassword'][type='password']")).sendKeys(password);
+		driver.findElement(By.id("MainContent_txtVerifyPassword")).sendKeys(password);
 		
 		//Interact with other elements
 		//Radio button
@@ -40,7 +54,7 @@ public class MozillaFirefoxDriver {
 		driver.findElement(By.cssSelector("input[name='ctl00$MainContent$Gender'][value='Female']")).click();
 		
 		//Access and select from Dropdown
-		new Select(driver.findElement(By.id("MainContent_menuCountry"))).selectByVisibleText("India");
+		new Select(driver.findElement(By.id("MainContent_menuCountry"))).selectByVisibleText(country);
 		
 		//Check boxes
 		driver.findElement(By.name("ctl00$MainContent$checkWeeklyEmail")).click();
