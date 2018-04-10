@@ -11,9 +11,6 @@ public class MozillaFirefoxDriver {
 
 	public static void main(String[] args) {
 		
-		
-		final String fireFoxDriver = "webdriver.gecko.driver";
-		final String fireFoxDriverPath = "/Users/kylederrick/Desktop/Software/geckodriver";
 		final String webSiteURL = "http://sdettraining.com/trguitransactions/AccountManagement.aspx";
 		final String createAccount = "Create Account";
 		final String name = "Jojo Johnson";
@@ -21,8 +18,8 @@ public class MozillaFirefoxDriver {
 		final String phoneNumber = "5039999999";
 		final String password = "FakePassword";
 		final String country = "India";
-		WebDriver driver;
 		String browserType = "firefox";
+		WebDriver driver;
 		
 		//For Check boxes and radio button
 		String gender;
@@ -31,18 +28,7 @@ public class MozillaFirefoxDriver {
 		String occassionalEmail;
 		
 		//Create WebDriver
-		if(browserType.equals("firefox")) {
-			//Set web driver
-			System.setProperty(fireFoxDriver, fireFoxDriverPath);
-			//Instantiate driver
-			driver = new FirefoxDriver();
-			System.out.println("Using FireFox");
-		} else {
-			System.setProperty("webdriver.chrome.driver", "/Users/kylederrick/Desktop/Software/chromedriver");
-			driver = new ChromeDriver();
-			System.out.println("using Chrome");
-		}
-		
+		driver = utilities.DriverFactory.open(browserType);
 		
 		//Open browser and navigate to page
 		driver.get(webSiteURL);
