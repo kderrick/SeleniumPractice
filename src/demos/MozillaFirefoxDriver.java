@@ -24,9 +24,9 @@ public class MozillaFirefoxDriver {
 		
 		//For Check boxes and radio button
 		String gender = "male";
-		String weeklyEmail;
-		String monthlyEmail;
-		String occassionalEmail;
+		boolean weeklyEmail = true;
+		boolean monthlyEmail = true;
+		boolean occassionalEmail = false;
 		
 		//Create WebDriver
 		driver = utilities.DriverFactory.open(browserType);
@@ -46,6 +46,8 @@ public class MozillaFirefoxDriver {
 		WebElement countryElement = driver.findElement(By.id("MainContent_menuCountry"));
 		WebElement femaleRadioElement = driver.findElement(By.cssSelector("input[name='ctl00$MainContent$Gender'][value='Female']"));
 		WebElement maleRadioElement = driver.findElement(By.name("ctl00$MainContent$Gender"));
+		WebElement weeklyEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkWeeklyEmail"));
+		WebElement monthlyEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkMonthlyEmail"));
 		//Fill out form
 		nameElement.sendKeys(name);
 		emailElement.sendKeys(email);
@@ -66,8 +68,23 @@ public class MozillaFirefoxDriver {
 		new Select(countryElement).selectByVisibleText(country);
 		
 		//Check boxes
-		driver.findElement(By.name("ctl00$MainContent$checkWeeklyEmail")).click();
-		driver.findElement(By.name("ctl00$MainContent$checkMonthlyEmail")).click();
+		
+		//If set true
+		if(weeklyEmail) {
+			//Verify if box is already checked
+			if(!weeklyEmailCheckBox.isSelected()) {
+				//if not, check it
+				weeklyEmailCheckBox.click();
+			}
+			//otherwise
+		} else {
+			//check if it is checked
+			if(weeklyEmailCheckBox.isSelected()) {
+				//uncheck it
+				weeklyEmailCheckBox.click();
+			}
+		}
+		monthlyEmailCheckBox.click();
 		
 		//Click Submit button
 		driver.findElement(By.id("MainContent_btnSubmit")).click();
