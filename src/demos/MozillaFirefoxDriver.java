@@ -23,13 +23,19 @@ public class MozillaFirefoxDriver {
 		WebDriver driver;
 		
 		//For Check boxes and radio button
-		String gender;
+		String gender = "male";
 		String weeklyEmail;
 		String monthlyEmail;
 		String occassionalEmail;
 		
 		//Create WebDriver
 		driver = utilities.DriverFactory.open(browserType);
+		
+		//Open browser and navigate to page
+		driver.get(webSiteURL);
+		//Locate Elements
+		//Click "Create Account" button
+		driver.findElement(By.linkText(createAccount)).click();
 		
 		//Define Web Elements
 		WebElement nameElement = driver.findElement(By.name("ctl00$MainContent$txtFirstName"));
@@ -38,12 +44,8 @@ public class MozillaFirefoxDriver {
 		WebElement passwordElement = driver.findElement(By.cssSelector("input[id='MainContent_txtPassword'][type='password']"));
 		WebElement passwordVerificationElement = driver.findElement(By.id("MainContent_txtVerifyPassword"));
 		WebElement countryElement = driver.findElement(By.id("MainContent_menuCountry"));
-		
-		//Open browser and navigate to page
-		driver.get(webSiteURL);
-		//Locate Elements
-		//Click "Create Account" button
-		driver.findElement(By.linkText(createAccount)).click();
+		WebElement femaleRadioElement = driver.findElement(By.cssSelector("input[name='ctl00$MainContent$Gender'][value='Female']"));
+		WebElement maleRadioElement = driver.findElement(By.name("ctl00$MainContent$Gender"));
 		//Fill out form
 		nameElement.sendKeys(name);
 		emailElement.sendKeys(email);
@@ -53,9 +55,12 @@ public class MozillaFirefoxDriver {
 		
 		//Interact with other elements
 		//Radio button
-		//driver.findElement(By.id("MainContent_Female")).click();
-		//Or by using CSS
-		driver.findElement(By.cssSelector("input[name='ctl00$MainContent$Gender'][value='Female']")).click();
+
+		if(gender.equalsIgnoreCase("Female")){
+			femaleRadioElement.click();
+		} else {
+		maleRadioElement.click();
+		}
 		
 		//Access and select from Dropdown
 		new Select(countryElement).selectByVisibleText(country);
@@ -73,7 +78,7 @@ public class MozillaFirefoxDriver {
 		System.out.println(confirmation);
 		
 		//Close browser
-		driver.close();
+		//driver.close();
 	}
 
 }
