@@ -14,7 +14,7 @@ public class MozillaFirefoxDriver {
 		
 		final String webSiteURL = "http://sdettraining.com/trguitransactions/AccountManagement.aspx";
 		final String createAccount = "Create Account";
-		final String name = "Jojo Johnson";
+		final String name = "Jo Johnson";
 		final String email = "fakemeail@gmail.com";
 		final String phoneNumber = "5039999999";
 		final String password = "FakePassword";
@@ -98,10 +98,15 @@ public class MozillaFirefoxDriver {
 		
 		//Get confirmation after submit
 		String confirmation = driver.findElement(By.id("MainContent_lblTransactionResult")).getText();
-		System.out.println(confirmation);
+		String expected = "Customer information added successfully";
+		if(confirmation.equalsIgnoreCase(expected)) {
+			System.out.println("TEST PASSED");
+		} else {
+			System.out.println("TEST FAILED");
+		}
 		
 		//Close browser
-		//driver.close();
+		driver.close();
 	}
 
 }
