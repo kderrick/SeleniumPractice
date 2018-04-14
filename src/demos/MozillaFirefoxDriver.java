@@ -24,9 +24,12 @@ public class MozillaFirefoxDriver {
 		
 		//For Check boxes and radio button
 		String gender = "male";
+		//Set these true if you want box checked when submit occurs
 		boolean weeklyEmail = true;
 		boolean monthlyEmail = true;
-		boolean occassionalEmail = false;
+		boolean occassionalEmail = true;
+		boolean[] checkBoxes = new boolean[]{weeklyEmail, monthlyEmail, occassionalEmail};
+		
 		
 		//Create WebDriver
 		driver = utilities.DriverFactory.open(browserType);
@@ -48,6 +51,8 @@ public class MozillaFirefoxDriver {
 		WebElement maleRadioElement = driver.findElement(By.name("ctl00$MainContent$Gender"));
 		WebElement weeklyEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkWeeklyEmail"));
 		WebElement monthlyEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkMonthlyEmail"));
+		WebElement occasionalEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkUpdates"));
+		WebElement[] elementArray = new WebElement[]{weeklyEmailCheckBox, monthlyEmailCheckBox, occasionalEmailCheckBox};
 		//Fill out form
 		nameElement.sendKeys(name);
 		emailElement.sendKeys(email);
@@ -68,23 +73,24 @@ public class MozillaFirefoxDriver {
 		new Select(countryElement).selectByVisibleText(country);
 		
 		//Check boxes
-		
-		//If set true
-		if(weeklyEmail) {
-			//Verify if box is already checked
-			if(!weeklyEmailCheckBox.isSelected()) {
-				//if not, check it
-				weeklyEmailCheckBox.click();
+		int elementArrayCounter = 0;
+		//Loop through array of bools
+		for(boolean b : checkBoxes) {
+			//Check if weekly, monthly, occasional bool is true
+			if(b) {
+			//If that bool is true, check if it is checked
+				if(!elementArray[elementArrayCounter].isSelected()){
+					elementArray[elementArrayCounter].click();
+				}
+			} else {
+				if(elementArray[elementArrayCounter].isSelected()) {
+					//uncheck it
+					elementArray[elementArrayCounter].click();
+				}
 			}
-			//otherwise
-		} else {
-			//check if it is checked
-			if(weeklyEmailCheckBox.isSelected()) {
-				//uncheck it
-				weeklyEmailCheckBox.click();
-			}
+			elementArrayCounter++;
 		}
-		monthlyEmailCheckBox.click();
+		
 		
 		//Click Submit button
 		driver.findElement(By.id("MainContent_btnSubmit")).click();
