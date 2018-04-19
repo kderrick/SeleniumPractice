@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="2870" started-at="2018-04-19T03:37:34Z" finished-at="2018-04-19T03:37:37Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="2870" started-at="2018-04-19T03:37:34Z" finished-at="2018-04-19T03:37:37Z">
+      <class name="smoketests.LoginTestNG">
+        <test-method status="PASS" signature="loginElementsArePresent()[pri:0, instance:smoketests.LoginTestNG@53f65459]" name="loginElementsArePresent" duration-ms="2801" started-at="2018-04-19T03:37:34Z" finished-at="2018-04-19T03:37:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginElementsArePresent -->
+      </class> <!-- smoketests.LoginTestNG -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
