@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2646" started-at="2018-04-21T16:51:21Z" finished-at="2018-04-21T16:51:23Z">
+  <suite name="Selenium Practice Suite" duration-ms="5734" started-at="2018-04-22T16:31:16Z" finished-at="2018-04-22T16:31:21Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2646" started-at="2018-04-21T16:51:21Z" finished-at="2018-04-21T16:51:23Z">
-      <class name="smoketests.ATagTest">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:smoketests.ATagTest@1b68ddbd]" name="setUp" is-config="true" duration-ms="2284" started-at="2018-04-21T16:51:21Z" finished-at="2018-04-21T16:51:23Z">
+    <test name="Smoke Tests" duration-ms="5734" started-at="2018-04-22T16:31:16Z" finished-at="2018-04-22T16:31:21Z">
+      <class name="smoketests.LoginTestNG">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:smoketests.LoginTestNG@27a5f880]" name="setUp" is-config="true" duration-ms="1463" started-at="2018-04-22T16:31:18Z" finished-at="2018-04-22T16:31:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="aTagsTest()[pri:0, instance:smoketests.ATagTest@1b68ddbd]" name="aTagsTest" duration-ms="231" started-at="2018-04-21T16:51:23Z" finished-at="2018-04-21T16:51:23Z">
+        <test-method status="PASS" signature="loginElementsArePresent()[pri:0, instance:smoketests.LoginTestNG@27a5f880]" name="loginElementsArePresent" duration-ms="1732" started-at="2018-04-22T16:31:20Z" finished-at="2018-04-22T16:31:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginElementsArePresent -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:smoketests.LoginTestNG@27a5f880]" name="tearDown" is-config="true" duration-ms="126" started-at="2018-04-22T16:31:21Z" finished-at="2018-04-22T16:31:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- smoketests.LoginTestNG -->
+      <class name="smoketests.ATagTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:smoketests.ATagTest@394e1a0f]" name="setUp" is-config="true" duration-ms="2132" started-at="2018-04-22T16:31:16Z" finished-at="2018-04-22T16:31:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="aTagsTest()[pri:0, instance:smoketests.ATagTest@394e1a0f]" name="aTagsTest" duration-ms="169" started-at="2018-04-22T16:31:18Z" finished-at="2018-04-22T16:31:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- aTagsTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:smoketests.ATagTest@1b68ddbd]" name="tearDown" is-config="true" duration-ms="109" started-at="2018-04-21T16:51:23Z" finished-at="2018-04-21T16:51:23Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:smoketests.ATagTest@394e1a0f]" name="tearDown" is-config="true" duration-ms="85" started-at="2018-04-22T16:31:18Z" finished-at="2018-04-22T16:31:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- smoketests.ATagTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Smoke Tests -->
+  </suite> <!-- Selenium Practice Suite -->
 </testng-results>

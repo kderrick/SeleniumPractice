@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Suite" parallel="false">
-  <test name="Test">
+<suite name="Selenium Practice Suite" parallel="false">
+  <test name="Smoke Tests">
     <classes>
       <class name="smoketests.ATagTest"/>
+      <class name="smoketests.LoginTestNG"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
