@@ -3,7 +3,6 @@ package tests;
 import java.util.List;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,15 +15,9 @@ import org.openqa.selenium.support.ui.Select;
 
 @RunWith(value = Parameterized.class)
 public class NewAccountDDT {
-	String name;
-	String email;
-	String phone;
-	String gender;
-	String password;
-	String country;
-	boolean weeklyEmail;
-	boolean monthlyEmail;
-	boolean occasionalEmail;
+	String name, email, phone, gender, password, country;
+	boolean weeklyEmail, monthlyEmail, occasionalEmail;
+	WebElement nameElement, emailElement, phoneElement, passwordElement, passwordVerificationElement, countryElement, femaleRadioElement, maleRadioElement, weeklyEmailCheckBox, monthlyEmailCheckBox, occasionalEmailCheckBox;
 	boolean[] checkBoxes = new boolean[]{weeklyEmail, monthlyEmail, occasionalEmail};
 	WebDriver driver;
 	
@@ -35,19 +28,7 @@ public class NewAccountDDT {
 		System.out.println("New Record : " + name + " " + email + "  "+ phone + " " + gender + " " + password +
 				" " + country + " " + weeklyEmail + " " + monthlyEmail + " " + occasionalEmail);
 		
-		//Define Web Elements
-		WebElement nameElement = driver.findElement(By.name("ctl00$MainContent$txtFirstName"));
-		WebElement emailElement = driver.findElement(By.id("MainContent_txtEmail"));
-		WebElement phoneElement = driver.findElement(By.xpath("//*[@id='MainContent_txtHomePhone']"));
-		WebElement passwordElement = driver.findElement(By.cssSelector("input[id='MainContent_txtPassword'][type='password']"));
-		WebElement passwordVerificationElement = driver.findElement(By.id("MainContent_txtVerifyPassword"));
-		WebElement countryElement = driver.findElement(By.id("MainContent_menuCountry"));
-		WebElement femaleRadioElement = driver.findElement(By.cssSelector("input[name='ctl00$MainContent$Gender'][value='Female']"));
-		WebElement maleRadioElement = driver.findElement(By.name("ctl00$MainContent$Gender"));
-		WebElement weeklyEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkWeeklyEmail"));
-		WebElement monthlyEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkMonthlyEmail"));
-		WebElement occasionalEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkUpdates"));
-		WebElement[] elementArray = new WebElement[]{weeklyEmailCheckBox, monthlyEmailCheckBox, occasionalEmailCheckBox};
+		defineWebElements();
 		
 		//Fill out form
 		nameElement.sendKeys(name);
@@ -94,6 +75,21 @@ public class NewAccountDDT {
 	@After
 	public void tearDown() {
 		driver.quit();
+	}
+	
+	public void defineWebElements() {
+		//Define Web Elements
+		nameElement = driver.findElement(By.name("ctl00$MainContent$txtFirstName"));
+		emailElement = driver.findElement(By.id("MainContent_txtEmail"));
+		phoneElement = driver.findElement(By.xpath("//*[@id='MainContent_txtHomePhone']"));
+		passwordElement = driver.findElement(By.cssSelector("input[id='MainContent_txtPassword'][type='password']"));
+		passwordVerificationElement = driver.findElement(By.id("MainContent_txtVerifyPassword"));
+		countryElement = driver.findElement(By.id("MainContent_menuCountry"));
+		femaleRadioElement = driver.findElement(By.cssSelector("input[name='ctl00$MainContent$Gender'][value='Female']"));
+		maleRadioElement = driver.findElement(By.name("ctl00$MainContent$Gender"));
+		weeklyEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkWeeklyEmail"));
+		monthlyEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkMonthlyEmail"));
+		occasionalEmailCheckBox = driver.findElement(By.name("ctl00$MainContent$checkUpdates"));
 	}
 	
 	//This annotated method passes the data/parameters into the class via constructor below
