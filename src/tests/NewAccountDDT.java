@@ -2,6 +2,7 @@ package tests;
 
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,8 +34,6 @@ public class NewAccountDDT {
 	public void newAccountTest() {
 		System.out.println("New Record : " + name + " " + email + "  "+ phone + " " + gender + " " + password +
 				" " + country + " " + weeklyEmail + " " + monthlyEmail + " " + occasionalEmail);
-		
-	
 		
 		//Define Web Elements
 		WebElement nameElement = driver.findElement(By.name("ctl00$MainContent$txtFirstName"));
@@ -90,6 +89,11 @@ public class NewAccountDDT {
 		driver = utilities.DriverFactory.open("chrome");
 		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
 		driver.findElement(By.xpath("//*[@id='ctl01']/div[3]/div[2]/div/div[2]/a")).click();
+	}
+	
+	@After
+	public void tearDown() {
+		driver.quit();
 	}
 	
 	//This annotated method passes the data/parameters into the class via constructor below
