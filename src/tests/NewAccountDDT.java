@@ -34,7 +34,7 @@ public class NewAccountDDT {
 		
 		WebDriver driver = utilities.DriverFactory.open("chrome");
 		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
-		driver.findElement(By.linkText("Create Account")).click();
+		driver.findElement(By.xpath("//*[@id='ctl01']/div[3]/div[2]/div/div[2]/a")).click();
 		
 		//Define Web Elements
 		WebElement nameElement = driver.findElement(By.name("ctl00$MainContent$txtFirstName"));
@@ -69,24 +69,35 @@ public class NewAccountDDT {
 		//Access and select from Dropdown
 		new Select(countryElement).selectByVisibleText(country);
 		
-		//Check boxes
-		int elementArrayCounter = 0;
-		//Loop through array of bools
-		for(boolean b : checkBoxes) {
-			//Check if weekly, monthly, occasional bool is true
-			if(b) {
-			//If that bool is true, check if it is checked
-				if(!elementArray[elementArrayCounter].isSelected()){
-					elementArray[elementArrayCounter].click();
-				}
-			} else {
-				if(elementArray[elementArrayCounter].isSelected()) {
-					//uncheck it
-					elementArray[elementArrayCounter].click();
-				}
+		//Check Box Algorithm
+		if(weeklyEmail) {
+			if(!weeklyEmailCheckBox.isSelected()) {
+				weeklyEmailCheckBox.click();
 			}
-			elementArrayCounter++;
+		} else {
+			if(weeklyEmailCheckBox.isSelected()) {
+				weeklyEmailCheckBox.click();
+			}
 		}
+		
+//		//Check boxes
+//		int elementArrayCounter = 0;
+//		//Loop through array of bools
+//		for(boolean b : checkBoxes) {
+//			//Check if weekly, monthly, occasional bool is true
+//			if(b) {
+//			//If that bool is true, check if it is checked
+//				if(!elementArray[elementArrayCounter].isSelected()){
+//					elementArray[elementArrayCounter].click();
+//				}
+//			} else {
+//				if(elementArray[elementArrayCounter].isSelected()) {
+//					//uncheck it
+//					elementArray[elementArrayCounter].click();
+//				}
+//			}
+//			elementArrayCounter++;
+//		}
 		
 		
 		driver.findElement(By.id("MainContent_btnSubmit")).click();
