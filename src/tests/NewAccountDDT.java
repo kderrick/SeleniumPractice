@@ -3,6 +3,7 @@ package tests;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -24,6 +25,7 @@ public class NewAccountDDT {
 	boolean monthlyEmail;
 	boolean occasionalEmail;
 	boolean[] checkBoxes = new boolean[]{weeklyEmail, monthlyEmail, occasionalEmail};
+	WebDriver driver;
 	
 	
 	//Test Method
@@ -32,9 +34,7 @@ public class NewAccountDDT {
 		System.out.println("New Record : " + name + " " + email + "  "+ phone + " " + gender + " " + password +
 				" " + country + " " + weeklyEmail + " " + monthlyEmail + " " + occasionalEmail);
 		
-		WebDriver driver = utilities.DriverFactory.open("chrome");
-		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
-		driver.findElement(By.xpath("//*[@id='ctl01']/div[3]/div[2]/div/div[2]/a")).click();
+	
 		
 		//Define Web Elements
 		WebElement nameElement = driver.findElement(By.name("ctl00$MainContent$txtFirstName"));
@@ -80,28 +80,16 @@ public class NewAccountDDT {
 			}
 		}
 		
-//		//Check boxes
-//		int elementArrayCounter = 0;
-//		//Loop through array of bools
-//		for(boolean b : checkBoxes) {
-//			//Check if weekly, monthly, occasional bool is true
-//			if(b) {
-//			//If that bool is true, check if it is checked
-//				if(!elementArray[elementArrayCounter].isSelected()){
-//					elementArray[elementArrayCounter].click();
-//				}
-//			} else {
-//				if(elementArray[elementArrayCounter].isSelected()) {
-//					//uncheck it
-//					elementArray[elementArrayCounter].click();
-//				}
-//			}
-//			elementArrayCounter++;
-//		}
-		
-		
 		driver.findElement(By.id("MainContent_btnSubmit")).click();
 
+	}
+	
+	
+	@Before
+	public void setUp() {
+		driver = utilities.DriverFactory.open("chrome");
+		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
+		driver.findElement(By.xpath("//*[@id='ctl01']/div[3]/div[2]/div/div[2]/a")).click();
 	}
 	
 	//This annotated method passes the data/parameters into the class via constructor below
