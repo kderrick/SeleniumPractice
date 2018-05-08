@@ -34,16 +34,27 @@ public class Expedia {
 		
 		driver.findElement(By.xpath("//*[@id='gcw-hotel-form-hp-hotel']/div[9]/label/button")).click();
 		
+		//Get name of city seached
+		String searchedCity = driver.findElement(By.xpath("//*[@id='hotelResultTitle']/h1")).getText();
+		System.out.println("This is the city we searched" + searchedCity);
 		
+		
+		//Click 4 star rating
 		driver.findElement(By.cssSelector("input[name='star'][value='40']")).click();
+		
+		//Click on a dynamic search result
+		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		//driver.findElement(By.xpath("//*[@id='1639']/div[2]/div/a")).click();
+		
+		//driver.findElement(By.xpath("//*[@id='resultsContainer']/section/article[4]/div[2]/div/a")).click();
 	}
 	
 	@BeforeMethod
 	public void setUp() {
 		driver = utilities.DriverFactory.open(browserType);
-		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.get("https://www.expedia.com/");
-		//Added implicit wait to setUp, cleared fields on search before entering data and modified returned search retults
+		
 		
 	}
 	
