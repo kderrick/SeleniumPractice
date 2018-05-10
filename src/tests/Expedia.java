@@ -30,7 +30,7 @@ public class Expedia {
 		driver.findElement(By.id("hotel-checkout-hp-hotel")).sendKeys(checkOut);
 		
 		driver.findElement(By.xpath("//*[@id='hotel-checkout-hp-hotel']")).click();
-		//driver.findElement(By.xpath("//*[@id='gcw-hotel-form-hp-hotel']/div[4]/div[3]/div/ul/li/div/div/div/div[2]/div[4]/button/span[1]/svg")).click();
+		
 		
 		driver.findElement(By.xpath("//*[@id='gcw-hotel-form-hp-hotel']/div[9]/label/button")).click();
 		
@@ -43,10 +43,9 @@ public class Expedia {
 		driver.findElement(By.cssSelector("input[name='star'][value='40']")).click();
 		
 		//Click on a dynamic search result
-		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		//driver.findElement(By.xpath("//*[@id='1639']/div[2]/div/a")).click();
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		
-		//driver.findElement(By.xpath("//*[@id='resultsContainer']/section/article[4]/div[2]/div/a")).click();
+		driver.findElement(By.xpath("//*[@id='resultsContainer']/section/article[4]/div[2]/div/a")).click();
 	}
 	
 	@BeforeMethod
