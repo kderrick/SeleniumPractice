@@ -1,8 +1,10 @@
 package tests;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
@@ -38,14 +40,26 @@ public class Expedia {
 		String searchedCity = driver.findElement(By.xpath("//*[@id='hotelResultTitle']/h1")).getText();
 		System.out.println("This is the city we searched" + searchedCity);
 		
+		//Maximize Screen
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		System.out.println("After maximize wait");
 		
 		//Click 4 star rating
 		driver.findElement(By.cssSelector("input[name='star'][value='40']")).click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		System.out.println("After 4 star wait");
 		
 		//Click on a dynamic search result
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
-		driver.findElement(By.xpath("//*[@id='resultsContainer']/section/article[4]/div[2]/div/a")).click();
+		driver.findElement(By.xpath("//*[@id='resultsContainer']/section/article[3]/div[2]/div/a"))
+		.sendKeys(Keys.RETURN);
+		//Redirect target to newly opened window
+//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//		ArrayList<String> windows = new ArrayList<String>(driver.getWindowHandles());
+//		driver.switchTo().window(windows.get(1));
+		
+		
 	}
 	
 	//*[@id="resultsContainer"]
