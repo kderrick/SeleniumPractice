@@ -40,10 +40,10 @@ public class Expedia {
 		
 		
 		//Click 4 star rating
-		//driver.findElement(By.cssSelector("input[name='star'][value='40']")).click();
+		driver.findElement(By.cssSelector("input[name='star'][value='40']")).click();
 		
 		//Click on a dynamic search result
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		driver.findElement(By.xpath("//*[@id='resultsContainer']/section/article[4]/div[2]/div/a")).click();
 	}
