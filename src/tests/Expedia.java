@@ -55,9 +55,12 @@ public class Expedia {
 		driver.findElement(By.xpath("//*[@id='resultsContainer']/section/article[3]/div[2]/div/a"))
 		.sendKeys(Keys.RETURN);
 		//Redirect target to newly opened window
-//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//		ArrayList<String> windows = new ArrayList<String>(driver.getWindowHandles());
-//		driver.switchTo().window(windows.get(1));
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		ArrayList<String> windows = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(windows.get(1));
+		
+		String newWindowHotelName = driver.findElement(By.id("hotel-name")).getText();
+		System.out.println(newWindowHotelName);
 		
 		
 	}
