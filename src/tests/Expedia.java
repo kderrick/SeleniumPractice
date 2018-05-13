@@ -7,9 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+
 
 public class Expedia {
 	
@@ -62,11 +65,28 @@ public class Expedia {
 		String newWindowHotelName = driver.findElement(By.id("hotel-name")).getText();
 		System.out.println(newWindowHotelName);
 		
+		//One result page, select to book
+		driver.findElement(By
+				.xpath("//*[@id='rooms-and-rates']/div/article/table/tbody[1]/tr/td[4]/div/div[1]/button"))
+				.click();
+		
+		//Click Pay Now Button
+		driver.findElement(By.id("pay-now-button")).click();
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		
+		//Get and print price
+		String totalCost = driver.findElement(By.cssSelector("span[class='summary-total amount-value'][data-price-update='total']"))
+		.getText();
+		System.out.println("Cost is: " + totalCost);
+		
+		//Get Confirmation
+		String pageTitle = driver.getTitle();
+		
+		Assert.assertTrue(pageTitle.contains("Payment"));
+		
 		
 	}
 	
-	//*[@id="resultsContainer"]
-	//*[@id="534143"]/div[2]/div/a
 	@BeforeMethod
 	public void setUp() {
 		driver = utilities.DriverFactory.open(browserType);
@@ -78,6 +98,6 @@ public class Expedia {
 	
 	@AfterMethod
 	public void tearDown() {
-		//driver.quit();
+		driver.quit();
 	}
 }
