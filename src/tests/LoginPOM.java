@@ -3,6 +3,8 @@ package tests;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import pages.LoginPage;
+
 public class LoginPOM {
 	
 	@Test
@@ -12,6 +14,7 @@ public class LoginPOM {
 		driver.get("http://sdettraining.com/trguitransactions/AccountManagement.aspx");
 	
 		//2. Enter login information
+		LoginPage loginPage = new LoginPage(driver);
 	
 		//3. Get confirmation
 	
